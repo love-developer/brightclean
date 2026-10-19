@@ -1,0 +1,19 @@
+import type { Metadata } from 'next';
+import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
+import { ClosingCta } from '../components/ClosingCta';
+import { MetricBadges, PhotoBlock, SectionHeading, ServiceIcon, SocialLinks } from '../components/ContentBlocks';
+import { aboutHighlights, images, siteConfig, whyChooseUs } from '../lib/content';
+
+export const metadata: Metadata = { title: 'About the people and principles behind BrightClean', description: 'A design-draft About page for BrightClean with original sample story copy, professional imagery, principles, and service values.' };
+
+export default function AboutPage() {
+  return <>
+    <section className="page-hero"><div className="container"><div className="eyebrow eyebrow-light">The story behind the clean</div><h1 className="display">A brighter way to care for space.</h1><p className="body-copy">This original sample story can become the client’s real point of view once the company history, team, and working method are confirmed.</p></div></section>
+    <section className="section section-blue" id="approach"><div className="container about-grid"><div className="about-copy"><div className="eyebrow">Our point of view</div><h2 className="display">Good cleaning is a form of <em style={{ color: 'var(--teal)', fontStyle: 'normal' }}>care.</em></h2><p className="body-copy">The right clean changes how a place feels to use. BrightClean is a sample brand built around that belief: make the brief clear, make the work visible, and leave people with one less thing to carry.</p><MetricBadges /><SocialLinks /></div><div className="about-visuals"><PhotoBlock label="Careful detail" src={images.cleaningTeam} tall /><PhotoBlock label="Ready room" src={images.office} /></div></div></section>
+    <section className="section"><div className="container"><SectionHeading eyebrow="The BrightClean approach" title="Small details, held to a useful standard." body="The page is intentionally written as a believable draft without inventing a founder story or unsupported business claims." /><div className="detail-grid">{aboutHighlights.map((item, index) => <article className="detail-panel" key={item.title}><span className="step-num">0{index + 1}</span><h2>{item.title}</h2><p>{item.text}</p></article>)}</div></div></section>
+    <section className="section section-ink" id="principles"><div className="container"><SectionHeading light eyebrow="Our principles" title="The details are the difference." body="Four original, non-claiming principles that can be replaced with the client’s real values." /><div className="why-grid">{whyChooseUs.map((item) => <div className="why-card" key={item.number}><span className="card-number"><ServiceIcon name={item.icon as never} size={15} /> {item.number}</span><h3>{item.title}</h3><p>{item.text}</p></div>)}</div></div></section>
+    <section className="section section-blue"><div className="container detail-grid"><div className="detail-panel"><div className="eyebrow">Client-ready note</div><h2>What to replace here</h2><p>Swap in the founder story, actual team names, the verified service approach, and original photography. Keep the voice direct and avoid unsupported claims.</p><Link className="btn btn-dark" href="/contact/" style={{ marginTop: 14 }}>Start a conversation <ArrowUpRight size={14} /></Link></div><div className="detail-panel" id="areas"><div className="eyebrow">Brand voice</div><h2>Warm, capable, specific.</h2><p>Example line: “Tell us what needs attention; we’ll make the next step simple.” This is intentionally distinct from the supplied reference copy and ready for a client rewrite.</p><p className="body-copy">Replace the sample area chips with the verified neighbourhoods, districts, and postcode sectors before launch.</p></div></div></section>
+    <ClosingCta />
+  </>;
+}
